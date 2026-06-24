@@ -1,0 +1,13 @@
+public static int productNonZero(Node root) {
+    if (root == null)
+        return 1;
+
+    int left = productNonZero(root.left);
+    int right = productNonZero(root.right);
+
+    if (root.val == 0)
+        return left * right;
+
+    return root.val * left * right;
+}
+ 
