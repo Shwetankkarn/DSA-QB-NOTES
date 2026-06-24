@@ -1,0 +1,42 @@
+
+class Node{
+    int val;
+    Node left;
+    Node right;
+    Node(int val){
+        this.val = val;
+    }
+}
+
+
+public class implementation {
+    
+public static void main(String[] args) {
+    
+
+    Node a= new Node(344);
+    Node b= new Node(883);
+    Node c= new Node(39);
+    Node d= new Node(13);
+    Node e= new Node(43);
+    Node f= new Node(223);
+    Node g= new Node(-1);
+    a.left = b;
+    a.right= c;
+    b.left= d;
+    b.right= e;
+    c.left= f;
+    c.right= g;
+    display(a);
+    System.out.println();
+}
+
+
+public static int size(Node root){
+    if(root==null) return 0;
+    int leftsize= size(root.left);
+    int rightsize= size(root.right);
+    return 1+leftsize+rightsize;
+}
+ 
+}
