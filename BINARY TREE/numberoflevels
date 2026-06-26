@@ -1,0 +1,6 @@
+public static int getLevels(Node root){
+
+    if(root==null) return 0;
+
+    return 1+ Math.max(getLevels(root.left),getLevels(root.right));
+}
