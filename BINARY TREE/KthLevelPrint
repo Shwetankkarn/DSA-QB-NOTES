@@ -1,0 +1,50 @@
+
+class Node{
+    int val;
+    Node left;
+    Node right;
+    Node(int val){
+        this.val = val;
+    }
+}
+
+
+public class KThLevel {
+
+
+    public static void KThLevel(Node root, int level, int k){ // TC O(n^2)
+
+        if(root==null) return;
+        if(level==k) System.out.print(root.val+" ");
+        KThLevel(root.left, level+1, k);
+        KThLevel(root.right, level+1, k);
+    }
+
+
+    public static int getLevels(Node root){
+        if(root==null) return 0;
+
+        return 1+ Math.max(getLevels(root.left),getLevels(root.right));
+    }
+    public static void main(String[] args) {
+    
+
+    Node a= new Node(4);
+    Node b= new Node(3);
+    Node c= new Node(9);
+    Node d= new Node(3);
+    Node e= new Node(4);
+    Node f= new Node(0);
+    Node g= new Node(-1);
+    a.left = b;
+    a.right= c;
+    b.left= d;
+    b.right= e;
+    c.left= f;
+    c.right= g;
+    for(int i=0; i<getLevels(a); i++){
+        KThLevel(a,0,i);
+        System.out.println();
+    }
+}
+}
