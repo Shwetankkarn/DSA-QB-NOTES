@@ -1,0 +1,35 @@
+class Solution {
+
+public int noOfSize(Node root){
+    
+    if(root==null) return 0;
+    
+    int leftSize= noOfSize(root.left);
+    int rightSize= noOfSize(root.right);
+    
+    return 1+leftSize+rightSize;
+}
+
+
+public int noOfLevels(Node root){
+    if(root==null) return 0;
+    
+    return 1+Math.max(noOfLevels(root.left),noOfLevels(root.right));
+}
+
+
+    boolean isPerfect(Node root) {
+        // code here
+        int levels= noOfLevels(root);
+        
+        int size= noOfSize(root);
+        
+       if(size == (int)Math.pow(2, levels) - 1){
+      return true;
+   }
+
+        
+        
+        return false;
+    }
+    };
