@@ -1,0 +1,90 @@
+// METHOD 1
+
+class Pair {
+    Node node;
+    int level;
+    
+    Pair(Node node, int level){
+        this.node= node;
+        this.level= level;
+    }
+}
+
+class Solution {
+    
+    public static void LevelOrderTraversal(Node root, ArrayList<Integer> ans){
+        
+        
+        if(root == null)
+        return;
+        
+        Queue<Pair> q = new LinkedList<>();
+        
+        int currLevel=-1;
+        
+        q.add(new Pair(root,0));
+        
+        while(q.size()>0){
+            
+            Pair front= q.remove();
+            
+              if (front.level != currLevel) {
+                currLevel = front.level;
+                ans.add(front.node.data);
+            }
+            
+             if(front.node.right!=null){
+             q.add(new Pair(front.node.right, front.level + 1));
+            }
+            
+            if(front.node.left!=null){
+             q.add(new Pair(front.node.left, front.level + 1));
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
+    public ArrayList<Integer> rightView(Node root) {
+        // code here
+        ArrayList<Integer> ans= new ArrayList<>();
+        
+        LevelOrderTraversal(root,ans);
+        
+        return ans;
+    }
+}
+
+// METHOD 2
+
+class Solution {
+    
+    public static void view(Node root,int level, ArrayList<Integer> ans){
+        
+        if(root==null) return;
+        if(level>=ans.size()) ans.add(root.data);
+        else ans.set(level,root.data);
+        view(root.left,level+1,ans);
+        view(root.right,level+1,ans);
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    public ArrayList<Integer> rightView(Node root) {
+        // code here
+        ArrayList<Integer> ans= new ArrayList<>();
+        view(root,0,ans);
+        return ans;
+    }
+}
+
+
+
