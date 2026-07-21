@@ -1,0 +1,84 @@
+Question: Closest Element in a Sorted Array
+
+Given a sorted array of N integers and an integer K, find the element that is closest to K.
+
+If K is present in the array, print K.
+If K is not present, print the element having the minimum absolute difference with K.
+If two elements are equally close to K, print the smaller element.
+Input Format
+The first line contains an integer N, the size of the array.
+The second line contains an integer K, the key to search.
+The third line contains N space-separated integers in sorted order.
+Output Format
+
+Print the closest element.
+
+
+
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    Scanner sc= new Scanner(System.in);
+	    
+	    int n= sc.nextInt();
+	    int key= sc.nextInt();
+		
+		int[] arr= new int[n];
+		
+		for(int i=0; i<n; i++){
+		    arr[i]= sc.nextInt();
+		}
+		
+		int low=0, high= n-1;
+		
+		    
+		    while(low<=high){
+		        int mid= low+(high-low)/2;
+		        
+		        if(arr[mid]==key){
+		            
+		           System.out.println(arr[mid]);
+                        return;
+		            
+		        }
+		        
+		        else if(arr[mid]<key){
+		            low= mid+1;
+		        }
+		        
+		        else{
+		            high= mid-1;
+		        }
+		       
+		    }
+		    
+		    if(high<0){
+		        System.out.println(arr[0]);
+                  return;
+		    }
+		    
+		    if(low>=n){
+		       System.out.println(arr[n-1]);
+                return;
+		    }
+		    
+		    
+		        if(Math.abs(arr[low]-key)>Math.abs(arr[high]-key)){
+		           System.out.println(arr[high]);
+                    return;
+		        }
+		        else if(Math.abs(arr[high]-key)>Math.abs(arr[low]-key)){
+		           System.out.println(arr[low]);
+                    return;
+		        }
+		        else{
+		           System.out.println(Math.min(arr[low], arr[high]));
+                      return;
+		        }
+		    
+		}
+		
+}
