@@ -1,0 +1,25 @@
+class Solution {
+
+    public static void rev(Stack<Integer> st , Stack<Integer> Aux) {
+        if(Aux.size() == 0)
+            return;
+
+        int val = Aux.pop();
+
+        rev(st , Aux);
+
+        st.push(val);
+    }
+
+    public static void reverseStack(Stack<Integer> st) {
+        // code here
+        Stack<Integer> Aux = new Stack<>();
+
+        while(st.size() > 0) {
+            Aux.push(st.pop());
+        }
+
+        rev(st , Aux);
+
+    }
+}
