@@ -2,7 +2,7 @@ class Solution {
 
     static int[][] dp;
 
- public static int lcs(int i, int j, String a, String b){
+ public static int lcs(int i, int j, StringBuilder a, StringBuilder b){
 
    if(i<0|| j<0) return 0;
    if(dp[i][j]!=-1) return dp[i][j];
@@ -34,6 +34,6 @@ class Solution {
             }
 
         }
-        return lcs(m-1,n-1,text1,text2);
+        return lcs(m-1,n-1,a,b);
     }
 }
