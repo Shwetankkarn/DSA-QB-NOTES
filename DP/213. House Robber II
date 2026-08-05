@@ -1,0 +1,42 @@
+class Solution {
+
+static int[] dp;
+
+public static int loot(int[] nums,int i,int [] dp, int end ){
+
+if(i>=end) return 0;
+
+if(dp[i]!=-1) return dp[i];
+
+int rob= nums[i]+ loot(nums,i+2,dp,end);
+int skip= loot(nums,i+1,dp,end);
+
+return dp[i]= Math.max(rob,skip);
+   
+
+}
+
+
+
+    public int rob(int[] nums) {
+
+        int n= nums.length;
+
+        if (n == 1)
+            return nums[0];
+
+      dp = new int[n];
+    
+    Arrays.fill(dp,-1);
+      
+     int ans1= loot(nums,0,dp,n-1);
+
+       Arrays.fill(dp,-1);
+
+     int ans2= loot(nums,1,dp,n);
+
+    return Math.max(ans1,ans2);
+
+    }
+    
+}
