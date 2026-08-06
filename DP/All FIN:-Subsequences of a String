@@ -1,0 +1,42 @@
+class Solution {
+    public List<String> powerSet(String s) {
+        // Code here
+        List<String>ans= new ArrayList<>();
+        StringBuilder sb= new StringBuilder();
+        
+        int index =0;
+        
+        
+        substring(s,index,sb,ans);
+        
+        Collections.sort(ans);
+        return ans;
+    }
+    
+    public static void substring(String s, int index, StringBuilder sb, List<String>ans){
+        
+        
+        if(index>=s.length()) {
+            
+            String subseq= sb.toString();
+            ans.add(subseq);
+            return;
+            
+            
+        }
+        
+        
+        char ch= s.charAt(index);
+        
+        sb.append(ch);
+        
+        
+        substring(s,index+1,sb,ans);
+        
+        sb.deleteCharAt(sb.length()-1);
+        
+           substring(s,index+1,sb,ans);
+        
+        
+    }
+}
