@@ -1,0 +1,29 @@
+class Solution {
+    public ArrayList<ArrayList<Integer>> transpose(int[][] mat) {
+        // code here
+        ArrayList<ArrayList<Integer>> ans= new ArrayList<>();
+        
+        int row= mat.length;
+         int col= mat[0].length;
+        
+        int[][] brr= new int[col][row];
+        
+        for(int i=0; i<brr.length; i++){
+            
+              ArrayList<Integer> list = new ArrayList<>();
+              
+            for(int j=0; j<brr[0].length; j++){
+                
+              
+                
+               brr[i][j]= mat[j][i];
+               list.add(brr[i][j]);
+               
+            }
+            ans.add(list);
+        }
+        
+        return ans;
+        
+    }
+}
