@@ -1,4 +1,5 @@
 // WHEN WE HAVE TO CREATE A NEW ARRAY FOR TRANSPOSE
+// WHEN MATRIX IS NOT SQUARE
 
 class Solution {
     public ArrayList<ArrayList<Integer>> transpose(int[][] mat) {
@@ -31,6 +32,7 @@ class Solution {
 }
 
 // WHEN SAME ARRAY IS USED FOR TRANSPOSE
+// WHEN MATRIX IS  SQUARE
 
    int row= mat.length;
          int col= mat[0].length;
