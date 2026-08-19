@@ -1,3 +1,64 @@
+
+
+// METHOD 01 
+
+class Solution {
+    public int longestPalinSubseq(String s) {
+        // code here
+        
+        int i=0;
+        
+        int n= s.length();
+        
+        StringBuilder s1= new StringBuilder(s);
+        
+        int[][] dp= new int[n][n];
+        for(int j=0; j<dp.length; j++){
+            for(int k=0; k<dp[i].length; k++){
+                dp[j][k]=-1;
+            }
+        }
+        
+        return lps(s1,i,n-1,dp);
+        
+       
+        
+    }
+    
+    public static int lps(StringBuilder s1, int i, int j,int[][] dp){
+        
+        
+        if (i > j) return 0;
+
+        if (i == j) return 1;
+        
+         if(dp[i][j]!=-1) return dp[i][j];
+        
+        
+      
+        if(s1.charAt(i)==s1.charAt(j)) {
+            return dp[i][j]= 2+ lps(s1, i+1, j-1,dp);
+        }
+        
+        else{
+            
+            return dp[i][j]= Math.max(lps(s1, i, j-1,dp),lps(s1, i+1, j,dp));
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+    }
+}
+
+
+
+// METHOD 02
+
 class Solution {
 
   public static int solve(int[][]dp, int i, int j, StringBuilder s1, StringBuilder s2){
