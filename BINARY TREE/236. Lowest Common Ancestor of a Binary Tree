@@ -1,0 +1,48 @@
+ */
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        
+
+    ArrayList<TreeNode> n1= new ArrayList<>();
+    ArrayList<TreeNode> n2= new ArrayList<>();
+
+     anchestor(root,p,n1);
+      anchestor(root,q,n2);
+
+      TreeNode answer= null;
+
+      int i=0;
+
+      while(i<n1.size()&& i<n2.size()){
+
+     if(n1.get(i)!=n2.get(i))
+       break;
+       i++;
+      }
+
+      answer= n1.get(i-1);
+      return answer;
+
+
+    }
+
+    public static boolean anchestor(TreeNode root, TreeNode z, ArrayList<TreeNode> ans){
+
+    if(root==null) return false;
+
+    ans.add(root);
+
+    if(root==z) return true;
+
+  if (anchestor(root.left,z,ans) || anchestor(root.right,z,ans))
+  return true;
+
+
+   ans.remove(ans.size()-1);
+
+   return false;
+
+
+
+    }
+}
