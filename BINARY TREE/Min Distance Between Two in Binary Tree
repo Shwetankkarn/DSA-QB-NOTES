@@ -1,0 +1,55 @@
+class Solution {
+    public int findDist(Node root, int a, int b) {
+        // code here
+        ArrayList<Node> ans1= new ArrayList<>();
+          ArrayList<Node> ans2= new ArrayList<>();
+          
+          
+          dist(root,a,ans1);
+          dist(root,b,ans2);
+          
+          int i=0; 
+          
+          while(i<ans1.size() && i<ans2.size()){
+              
+              if(ans1.get(i)!=ans2.get(i))
+                  
+                  break;
+                  
+                  i++;
+                  
+              }
+              
+              i--;
+
+              int distance1 = ans1.size() - 1 - i;
+              int distance2 = ans2.size() - 1 - i;
+
+              return distance1 + distance2;
+              
+          }
+          
+          
+
+    
+    public static boolean dist(Node root, int n1, ArrayList<Node> ans){
+        
+        if(root==null) return false;
+        
+        ans.add(root);
+        
+        
+        if (root.data == n1)
+        return true;
+        
+        if(dist(root.left,n1,ans)||dist(root.right,n1,ans)) return true;
+        
+        ans.remove(ans.size() - 1);
+
+        return false;
+        
+        
+        
+        
+    }
+}
