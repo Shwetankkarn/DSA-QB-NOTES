@@ -22,3 +22,6 @@ class Solution {
         
     }
 }
+
+TC:- Best CASE :- O(N)
+     AVERAGE AND WORST- O(n^2)
