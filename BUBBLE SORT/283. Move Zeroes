@@ -1,3 +1,31 @@
+// METHOD 01
+
+
+class Solution {
+    public void moveZeroes(int[] arr) {
+        
+        int i=0, j=0;
+
+        while(j<arr.length){
+            if(arr[j]==0) j++;
+            else{
+                  int temp= arr[i];
+                    arr[i]= arr[j];
+                    arr[j]= temp;
+                  i++;
+                  j++;
+            }
+        }
+       
+    }
+}
+
+TIME COMPLEXITY:- O(n)
+
+
+// METHOD 2
+
+
 class Solution {
     public void moveZeroes(int[] arr) {
         
@@ -18,3 +46,5 @@ class Solution {
         }
     }
 }
+
+TIME COMPLEXITY:- O(n^2)
