@@ -1,0 +1,66 @@
+class Solution {
+    static int countDistinct(int arr[]) {
+        // code here
+        HashSet<Integer> ans= new HashSet<>();
+        
+        for(int i=0; i<arr.length; i++){
+            ans.add(arr[i]);
+        }
+        
+        return ans.size();
+        
+    }
+}
+
+
+class Solution {
+    static int countDistinct(int arr[]) {
+        
+        ArrayList<Integer> ans= new ArrayList<>();
+        // code here
+     Arrays.sort(arr);
+     
+     int i=0;
+     int j=0;
+  
+     while(j<arr.length){
+         
+         if(arr[i]==arr[j]){
+             j++;
+             
+           
+         }
+         
+       
+         else{
+             ans.add(arr[i]);
+             i=j;
+         }
+         
+        
+     }
+     
+     ans.add(arr[i]);
+     
+     return ans.size();
+     
+    }
+}
+
+
+
+static int countDistinct(int arr[]) {
+    if (arr.length == 0) return 0;
+
+    Arrays.sort(arr);
+
+    int count = 1;
+
+    for (int i = 1; i < arr.length; i++) {
+        if (arr[i] != arr[i - 1]) {
+            count++;
+        }
+    }
+
+    return count;
+}
