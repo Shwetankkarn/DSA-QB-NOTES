@@ -1,3 +1,76 @@
+
+// M-01 --> 1 Hashmap
+
+class Solution {
+    public boolean isAnagram(String s1, String s2) {
+
+        if(s1.length()!=s2.length()) return false;
+
+    HashMap<Character,Integer> aMap= new HashMap<>();
+
+    for(char ele: s1.toCharArray()){
+
+    if(aMap.containsKey(ele)){
+      
+      int freq= aMap.get(ele);
+      aMap.put(ele,freq+1);
+
+    }
+
+    else{
+
+       aMap.put(ele,1);
+
+    }
+
+
+    }
+    
+    for(char ele: s2.toCharArray()){
+
+      if(!aMap.containsKey(ele)) return false;
+
+      int freq= aMap.get(ele);
+      if(freq==0) return false;
+      aMap.put(ele,freq-1);
+
+    }
+     
+     return true;
+      
+     }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// METHOD 2 --> 2 HASHMAP
+
+
 class Solution {
     public boolean isAnagram(String s1, String s2) {
 
