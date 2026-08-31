@@ -1,0 +1,32 @@
+class Solution {
+    public int equalPairs(String s) {
+        // code here
+        HashMap<Character, Integer> aMap= new HashMap<>();
+        
+        for(char ele: s.toCharArray()){
+            
+            if(aMap.containsKey(ele)){
+                
+                int freq= aMap.get(ele);
+                
+                aMap.put(ele,freq+1);
+                
+            }
+            
+            else{
+                
+                 aMap.put(ele,1);
+                
+            }
+        }
+        int pairs=0;
+        for(char ch: aMap.keySet()){
+            long freq = aMap.get(ch);
+            pairs+= freq*freq;
+        }
+        
+        return pairs;
+        
+        
+    }
+}
