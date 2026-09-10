@@ -1,0 +1,58 @@
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+
+        int n = inorder.length;
+
+        return build(0, n - 1, 0, n - 1, inorder, postorder);
+    }
+
+    public static TreeNode build(int inlo, int inhi,
+                                 int postlo, int posthi,
+                                 int[] inorder, int[] postorder) {
+
+        // No elements
+        if (inlo > inhi || postlo > posthi) {
+            return null;
+        }
+
+        // In postorder, ROOT is at the END
+        int val = postorder[posthi];
+
+        TreeNode root = new TreeNode(val);
+
+        // Find root in inorder
+        int r = 0;
+
+        for (int i = inlo; i <= inhi; i++) {
+            if (inorder[i] == val) {
+                r = i;
+                break;
+            }
+        }
+
+        // Number of elements in LEFT subtree
+        int cnt = r - inlo;
+
+        // Build LEFT subtree
+        root.left = build(
+            inlo,
+            r - 1,
+            postlo,
+            postlo + cnt - 1,
+            inorder,
+            postorder
+        );
+
+        // Build RIGHT subtree
+        root.right = build(
+            r + 1,
+            inhi,
+            postlo + cnt,
+            posthi - 1,
+            inorder,
+            postorder
+        );
+
+        return root;
+    }
+}
