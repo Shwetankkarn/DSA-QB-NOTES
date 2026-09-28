@@ -1,0 +1,66 @@
+METHOD 1--> TWO POINTERS 
+
+class Solution {
+    public int singleNumber(int[] arr) {
+        
+        Arrays.sort(arr);
+
+      int i=0, j= 0;
+      int n= arr.length;
+
+      while(j<n){
+
+        if(arr[i]==arr[j]){
+            j++;
+        }
+
+        else{
+
+            if(j-i==1){
+                return arr[i];
+            }
+
+            i=j;
+           
+        }
+        
+      }
+
+       if(j-i==1){
+                return arr[i];
+            }
+
+            return -1;
+    }
+
+}
+
+// METHOD 2 --> BY HASHMAP
+
+class Solution {
+    public int singleNumber(int[] arr) {
+        
+        HashMap<Integer,Integer> map= new HashMap<>();
+       
+       for(int ele:arr){
+        
+        if(map.containsKey(ele)){
+            map.put(ele,map.get(ele)+1);
+        }
+
+        else{
+            map.put(ele,1);
+        }
+
+       }
+
+       for(int ele: arr){
+        if(map.get(ele)==1)
+        return ele;
+       }
+        
+        return -1;
+       
+    }
+
+}
