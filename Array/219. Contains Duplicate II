@@ -1,0 +1,56 @@
+class Solution {
+
+  // METHOD 1--> O(N) 
+
+    public boolean containsNearbyDuplicate(int[] ele, int k) {
+        
+    HashMap<Integer,Integer> map= new HashMap<>();
+
+    for(int i = 0; i < ele.length; i++){
+
+   if(map.containsKey(ele[i])){
+
+    if((i-map.get(ele[i])<=k)) return true;
+   }
+   
+   map.put(ele[i],i);
+
+    }
+    return false;
+}
+
+}
+
+// METHOD 2--> O(N^2) // TLE
+// class Solution {
+//     public boolean containsNearbyDuplicate(int[] arr, int k) {
+        
+//         int j= 1;
+
+
+//     for(int i=0; i<arr.length; i++){
+      
+//       j=i+1;
+
+//         while(j<arr.length){
+
+      
+//        if((arr[i]==arr[j])&& (Math.abs(i - j) <= k) ) return true;
+
+
+//        else{
+             
+//              j++;
+
+//        }
+
+//         }
+
+//     }
+ 
+
+
+//    return false;
+
+//     }
+// }
