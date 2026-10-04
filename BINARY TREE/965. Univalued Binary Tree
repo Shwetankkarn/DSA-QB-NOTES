@@ -1,0 +1,22 @@
+class Solution {
+    public boolean isUnivalTree(TreeNode root) {
+        
+        return Unival(root,root.val);
+
+    }
+
+    public static boolean Unival(TreeNode root,int value){
+   
+   if (root==null) return true;
+        
+    if(root.val!=value){
+      return false;
+    } 
+     
+   return (Unival(root.left,value)&&
+      Unival(root.right,value));
+
+
+    }
+
+}
