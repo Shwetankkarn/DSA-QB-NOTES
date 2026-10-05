@@ -1,0 +1,52 @@
+// METHOD 01 --> O(n) 
+
+class Solution {
+    public int maxProductDifference(int[] arr) {
+
+        int max = Integer.MIN_VALUE;
+        int secmax = Integer.MIN_VALUE;
+
+        int min = Integer.MAX_VALUE;
+        int secmin = Integer.MAX_VALUE;
+
+        for(int i = 0; i < arr.length; i++) {
+
+            // largest two
+            if(arr[i] > max) {
+                secmax = max;
+                max = arr[i];
+            }
+            else if(arr[i] > secmax) {
+                secmax = arr[i];
+            }
+
+            // smallest two
+            if(arr[i] < min) {
+                secmin = min;
+                min = arr[i];
+            }
+            else if(arr[i] < secmin) {
+                secmin = arr[i];
+            }
+        }
+
+        return (max * secmax) - (min * secmin);
+    }
+}
+
+// METHOD 02 --> O(nlogn) 
+
+// class Solution {
+//     public int maxProductDifference(int[] arr) {
+//         Arrays.sort(arr);
+
+//         int n= arr.length;
+
+//         int firstpair= arr[0]*arr[1];
+
+//          int lastpair= arr[n-1]*arr[n-2];
+
+//          return (lastpair-firstpair);
+
+//     }
+// }
