@@ -1,0 +1,62 @@
+ // method 1
+
+class Solution {
+    public int missingNumber(int[] arr) {
+       
+       HashMap<Integer,Integer> map= new HashMap<>();
+     
+     for(int i=0; i<arr.length; i++){
+    
+       map.put(arr[i],1);
+
+    }
+
+
+       for(int i=0; i<=arr.length; i++){
+    
+       if(!map.containsKey(i)){
+         return i;
+       }
+
+    }
+    return -1;
+}
+}
+ // method 2
+
+// class Solution {
+//     public int missingNumber(int[] arr) {
+//         Arrays.sort(arr);
+
+//       int low=0, high= arr.length-1;
+
+//       while(low<=high){
+
+//         int mid= low+ (high-low)/2;
+//         if(arr[mid]==mid){
+//             low= mid+1;
+//         }
+
+//         else{
+//             high= mid-1;
+//         }
+//       }
+//       return low;
+//     }
+// }
+
+
+// method 3
+
+
+
+// class Solution {
+//     public int missingNumber(int[] arr) {
+//         Arrays.sort(arr);
+
+//         for(int i=0; i<arr.length; i++){
+//             if(arr[i]!=i) return i;
+//         }
+//         return arr.length;
+//     }
+// }
