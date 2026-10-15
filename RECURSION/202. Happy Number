@@ -1,0 +1,40 @@
+class Solution {
+
+   public static boolean ishappy(int n, HashSet<Integer> ans){
+
+    if(n==1) return true;
+
+      if (ans.contains(n)) return false;
+
+    ans.add(n);
+    
+    int sum=0;
+    
+    while(n>0){
+
+   int rem= n%10;
+ 
+  sum= sum + (rem*rem);
+
+   n=n/10;
+
+
+    }
+
+    return ishappy(sum,ans);
+
+
+
+
+   }
+
+
+
+    public boolean isHappy(int n) {
+
+   HashSet<Integer> ans= new HashSet<>();
+   return ishappy(n,ans);
+
+
+    }
+}
