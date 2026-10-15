@@ -1,0 +1,79 @@
+class Solution {
+    public int smallestNumber(int n, int t) {
+        while (true) {
+            int product = 1;
+            int original = n;
+
+            while (original > 0) {
+                int digit = original % 10;
+                product *= digit;
+                original /= 10;
+            }
+
+            if (product % t == 0) {
+                return n;
+            }
+
+            n++;
+        }
+    }
+}
+
+// METHOD 2
+
+class Solution {
+    public int smallestNumber(int n, int t) {
+
+     
+
+
+       int prod= product(n,t);
+
+
+     if(prod%t==0) return n;
+
+     else {
+
+        for(int i= n+1; n<=100; i++){
+       
+         prod= product(i,t);
+
+          if (prod % t == 0) {
+                return i;
+            }
+
+        }
+
+      return -1;
+
+     }
+    }
+
+     public static int product(int n, int t){
+
+
+    int prod=1;
+
+     while(n>0){
+
+    int rem= n%10;
+
+
+    prod*= rem;
+
+    n= n/10;
+
+
+
+
+     }
+
+      return prod;
+
+     }
+
+    
+
+        
+    
+}
